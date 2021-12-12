@@ -9,14 +9,14 @@
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/nasalist"
+        android:label="@string/app_name"
         android:name=".MainApplication"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.NasaRoom">
         <activity
             android:name=".MainActivity"
-            android:label="@string/nasalist"
+            android:label="@string/app_name"
             android:theme="@style/Theme.NasaRoom.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

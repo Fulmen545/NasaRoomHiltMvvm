@@ -37,11 +37,12 @@ class NasaListFragment: Fragment(), NasaAdapter.ItemListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
-        if (isOnline(requireContext())){
-            viewModel.start()
-        }
+        hasInternet()
         setUpRecyclerView()
         setUpObserver()
+        binding.refreshBtn.setOnClickListener {
+            hasInternet()
+        }
     }
 
     private fun setUpRecyclerView() {
@@ -52,9 +53,9 @@ class NasaListFragment: Fragment(), NasaAdapter.ItemListener {
         }
     }
 
-    private fun  setUpObserver(){
+    private fun setUpObserver() {
         viewModel.res.observe(viewLifecycleOwner, {
-            when(it.status){
+            when (it.status) {
                 Resource.Status.SUCCESS -> {
                     binding.progress.visibility = View.GONE
                     nasaAdapter.setItems(ArrayList(it.data?.items))
@@ -74,6 +75,15 @@ class NasaListFragment: Fragment(), NasaAdapter.ItemListener {
         findNavController().navigate(
             R.id.action_nasaListFragment_to_DetailFragment
         )
+    }
+
+    private fun hasInternet() {
+        if (isOnline(requireContext())) {
+            viewModel.start()
+            binding.refreshBtn.visibility = View.GONE
+        } else {
+            binding.refreshBtn.visibility = View.VISIBLE
+        }
     }
 
 }
