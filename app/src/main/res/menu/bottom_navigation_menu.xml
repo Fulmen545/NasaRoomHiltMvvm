@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/NasaListFragment"
+        android:icon="@drawable/ic_baseline_rss_feed_24"
+        android:title="@string/main"
+        />
+
+    <item
+        android:id="@+id/FavoriteFragment"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:title="@string/favorites"
+        />
+</menu>
